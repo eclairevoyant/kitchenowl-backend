@@ -16,7 +16,9 @@ class Recipe(db.Model, DbModelMixin, TimestampMixin):
     photo = db.Column(db.String())
     planned = db.Column(db.Boolean)
     planned_days = db.Column(DbSetType(), default=set())
-    time = db.Column(db.Integer)
+    prepTime = db.Column(db.Integer)
+    cookTime = db.Column(db.Integer)
+    totalTime = db.Column(db.Integer)
     source = db.Column(db.String())
     suggestion_score = db.Column(db.Integer, server_default='0')
     suggestion_rank = db.Column(db.Integer, server_default='0')
@@ -55,7 +57,9 @@ class Recipe(db.Model, DbModelMixin, TimestampMixin):
         res = {
             "name": self.name,
             "description": self.description,
-            "time": self.time,
+            "prepTime": self.prepTime,
+            "cookTime": self.cookTime,
+            "totalTime": self.totalTime,
             "source": self.source,
             "items": [{"name": e.item.name, "description": e.description, "optional": e.optional} for e in items],
             "tags": [e.tag.name for e in tags],

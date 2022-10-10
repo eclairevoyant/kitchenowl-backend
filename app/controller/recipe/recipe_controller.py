@@ -32,8 +32,12 @@ def addRecipe(args):
     recipe = Recipe()
     recipe.name = args['name']
     recipe.description = args['description']
-    if 'time' in args:
-        recipe.time = args['time']
+    if 'prepTime' in args:
+        recipe.prepTime = args['prepTime']
+    if 'cookTime' in args:
+        recipe.cookTime = args['cookTime']
+    if 'totalTime' in args:
+        recipe.totalTime = args['totalTime']
     if 'source' in args:
         recipe.source = args['source']
     if 'photo' in args:
@@ -74,8 +78,12 @@ def updateRecipe(args, id):  # noqa: C901
         recipe.name = args['name']
     if 'description' in args:
         recipe.description = args['description']
-    if 'time' in args:
-        recipe.time = args['time']
+    if 'prepTime' in args:
+        recipe.prepTime = args['prepTime']
+    if 'cookTime' in args:
+        recipe.cookTime = args['cookTime']
+    if 'totalTime' in args:
+        recipe.totalTime = args['totalTime']
     if 'source' in args:
         recipe.source = args['source']
     if 'photo' in args:
@@ -149,7 +157,9 @@ def scrapeRecipe(args):
     scraper = scrape_me(args['url'], wild_mode=True)
     recipe = Recipe()
     recipe.name = scraper.title()
-    recipe.time = int(scraper.total_time())
+    recipe.prepTime = int(scraper.prep_time())
+    recipe.cookTime = int(scraper.cook_time())
+    recipe.totalTime = int(scraper.total_time())
     description = ''
     try:
         description = scraper.description() + "\n\n"

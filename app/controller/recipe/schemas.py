@@ -21,7 +21,9 @@ class AddRecipe(Schema):
     description = fields.String(
         validate=lambda a: a is not None
     )
-    time = fields.Integer()
+    prepTime = fields.Integer()
+    cookTime = fields.Integer()
+    totalTime = fields.Integer()
     source = fields.String()
     photo = fields.String()
     items = fields.List(fields.Nested(RecipeItem()))
@@ -43,7 +45,9 @@ class UpdateRecipe(Schema):
     description = fields.String(
         validate=lambda a: a is not None
     )
-    time = fields.Integer()
+    prepTime = fields.Integer()
+    cookTime = fields.Integer()
+    totalTime = fields.Integer()
     source = fields.String()
     photo = fields.String()
     items = fields.List(fields.Nested(RecipeItem()))
