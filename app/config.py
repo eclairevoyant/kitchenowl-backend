@@ -18,7 +18,7 @@ APP_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.dirname(APP_DIR)
 
 UPLOAD_FOLDER = os.getenv('STORAGE_PATH', PROJECT_DIR) + '/upload'
-ALLOWED_FILE_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+ALLOWED_FILE_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'webp'}
 
 JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=15)
 JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=30)
